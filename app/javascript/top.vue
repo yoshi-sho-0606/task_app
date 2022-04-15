@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
-    <p>{{$store.state.count}}</p>
+    <p>{{ title }}</p>
+    <router-link :to="{name: 'Tasks' }">Task一覧へ</router-link>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 export default {
   data: function () {
     return {
-      message: "Top page!"
+      title: "Top page!",
     }
   }
 }
