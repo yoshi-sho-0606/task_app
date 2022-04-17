@@ -19,6 +19,12 @@ export default createStore({
       state.tasks = state.tasks.filter(task =>{
         return task.id != deleteTask.id
       })
+    },
+    updateTask: (state, updateTask) => {
+      const index = state.tasks.findIndex(task => {
+        return task.id == updateTask.id
+      })
+      state.tasks.splice(index, 1, updateTask)
     }
   },
   actions: {
@@ -39,6 +45,12 @@ export default createStore({
       return axios.delete(`tasks/${task.id}`)
       .then(res => {
         commit('deleteTask', res.data)
+      })
+    },
+    updateTask({ commit }, task) {
+      return axios.patch(`tasks/${task.id}`, task)
+      .then(res => {
+        commit('updateTask', res.data)
       })
     }
   },

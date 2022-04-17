@@ -1,5 +1,5 @@
 class Api::V1::TasksController < ApplicationController
-  before_action :set_task, only: %i[show new destroy]
+  before_action :set_task, only: %i[show new destroy update]
 
   def index
     @tasks = Task.all
