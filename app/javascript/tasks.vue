@@ -5,7 +5,7 @@
       新規登録
     </button>
     <TaskDetailModal v-if="isVisibleTaskDetailModal" :task="taskDetail" @close-modal="handleCloseTaskDetailModal" />
-    <TaskCreateModal v-if="isVisibleTaskCreateModal"  @close-modal="handleCloseTaskCreateModal"/>
+    <TaskCreateModal v-if="isVisibleTaskCreateModal"  @close-modal="handleCloseTaskCreateModal" @create-task="handleCreateTask"/>
     <router-link :to="{name: 'Top' }">Task一覧へ</router-link>
     <div v-for='task in tasks' :key='task.id' @click="handleShowTaskDetailModal(task)">
       <p>{{task.name}}</p>
@@ -18,6 +18,7 @@
 <script>
 import TaskDetailModal from './pages/task/components/TaskDetailModal'
 import TaskCreateModal from './pages/task/components/TaskCreateModal'
+import { mapGetters, mapActions } from "vuex"
 
 export default {
   components: {
@@ -27,21 +28,22 @@ export default {
   data: function () {
     return {
       title: "Task page!",
-      tasks: [],
       taskDetail: {},
       isVisibleTaskDetailModal: false,
       isVisibleTaskCreateModal: false
     }
   },
-  created() {
+  computed: {
+    ...mapGetters(['tasks'])
+  },
+  created: function() {
     this.fetchTasks();
   },
   methods: {
-    fetchTasks() {
-      this.$axios.get("tasks")
-        .then(res => this.tasks = res.data)
-        .catch(err => console.log(err.status));
-    },
+    ...mapActions([
+      'fetchTasks',
+      'createTask'
+    ]),
     handleShowTaskDetailModal(task){
       this.isVisibleTaskDetailModal = true;
       this.taskDetail = task
@@ -55,6 +57,14 @@ export default {
     },
     handleCloseTaskCreateModal() {
       this.isVisibleTaskCreateModal = false;
+    },
+    async handleCreateTask(task){
+      try{
+        await this.createTask(task)
+        this.handleCloseTaskCreateModal()
+      } catch(error){
+        console.log(error)
+      }
     }
   },
 }

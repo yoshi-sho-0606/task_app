@@ -1,5 +1,6 @@
 <template>
-  <div @click="handleCloseModal">
+  <div>
+    <button @click="handleCloseModal">×</button>
     <h1>{{task.name}}</h1>
     <p>{{task.body}}</p>
   </div>
