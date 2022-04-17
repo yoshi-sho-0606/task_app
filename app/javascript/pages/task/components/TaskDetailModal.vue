@@ -3,6 +3,7 @@
     <button @click="handleCloseModal">×</button>
     <h1>{{task.name}}</h1>
     <p>{{task.body}}</p>
+    <button @click="handleDeleteTask(task)">削除</button>
   </div>
 </template>
 
@@ -25,6 +26,9 @@ export default {
   methods: {
     handleCloseModal(){
       this.$emit('close-modal')
+    },
+    handleDeleteTask(task){
+      this.$emit('delete-task', task)
     }
   }
 }

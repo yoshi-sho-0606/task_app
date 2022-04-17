@@ -4,7 +4,7 @@
     <button @click="handleShowTaskCreateModal">
       新規登録
     </button>
-    <TaskDetailModal v-if="isVisibleTaskDetailModal" :task="taskDetail" @close-modal="handleCloseTaskDetailModal" />
+    <TaskDetailModal v-if="isVisibleTaskDetailModal" :task="taskDetail" @close-modal="handleCloseTaskDetailModal" @delete-task="handleDeleteTask"/>
     <TaskCreateModal v-if="isVisibleTaskCreateModal"  @close-modal="handleCloseTaskCreateModal" @create-task="handleCreateTask"/>
     <router-link :to="{name: 'Top' }">Task一覧へ</router-link>
     <div v-for='task in tasks' :key='task.id' @click="handleShowTaskDetailModal(task)">
@@ -42,7 +42,8 @@ export default {
   methods: {
     ...mapActions([
       'fetchTasks',
-      'createTask'
+      'createTask',
+      'deleteTask'
     ]),
     handleShowTaskDetailModal(task){
       this.isVisibleTaskDetailModal = true;
@@ -62,6 +63,14 @@ export default {
       try{
         await this.createTask(task)
         this.handleCloseTaskCreateModal()
+      } catch(error){
+        console.log(error)
+      }
+    },
+    async handleDeleteTask(task){
+      try{
+        await this.deleteTask(task)
+        this.handleCloseTaskDetailModal()
       } catch(error){
         console.log(error)
       }
