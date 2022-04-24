@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class='task-container'>
     <p>{{ title }}</p>
     <button @click="handleShowTaskCreateModal">
       新規登録
@@ -8,10 +8,9 @@
     <TaskCreateModal v-if="isVisibleTaskCreateModal" @close-modal="handleCloseTaskCreateModal" @create-task="handleCreateTask" />
     <TaskEditModal v-if="isVisibleTaskEditModal" :task="taskEdit" @close-modal="handleCloseTaskEditModal" @update-task="handleUpdateTask"/>
     <router-link :to="{name: 'Top' }">Topページへ</router-link>
-    <div v-for='task in tasks' :key='task.id' @click="handleShowTaskDetailModal(task)">
+    <div v-for='task in tasks' :key='task.id' @click="handleShowTaskDetailModal(task)" class='task-card'>
       <p>{{task.name}}</p>
       <p>{{task.body}}</p>
-      <hr>
     </div>
   </div>
 </template>
@@ -104,8 +103,16 @@ export default {
 </script>
 
 <style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
-}
+  .task-container {
+    margin: 0 auto;
+    width: 80%;
+    max-width: 1000px; 
+  }
+  .task-card{
+    border: 1px solid;
+    margin-top: 5px;
+    width: 200px;
+    height: 100px;
+    color: 12px;
+  }
 </style>

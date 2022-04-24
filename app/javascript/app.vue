@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <TheHeader />
-    <router-view />
-    <TheFooter />
+  <div id='main'>
+    <div class='wrapper'>
+      <TheHeader />
+      <router-view />
+      <TheFooter />
+    </div>
   </div>
 </template>
 
@@ -17,4 +19,14 @@ export default {
   }
 }
 </script>
+<style>
+  #main {
+    width: 100%;
+  }
+  #main .wrapper {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1000px; 
+  }
+</style>
 
