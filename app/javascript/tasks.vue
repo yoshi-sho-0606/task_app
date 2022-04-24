@@ -7,7 +7,7 @@
     <TaskDetailModal v-if="isVisibleTaskDetailModal" :task="taskDetail" @close-modal="handleCloseTaskDetailModal" @delete-task="handleDeleteTask" @show-edit-modal="handleShowEditModal"/>
     <TaskCreateModal v-if="isVisibleTaskCreateModal" @close-modal="handleCloseTaskCreateModal" @create-task="handleCreateTask" />
     <TaskEditModal v-if="isVisibleTaskEditModal" :task="taskEdit" @close-modal="handleCloseTaskEditModal" @update-task="handleUpdateTask"/>
-    <router-link :to="{name: 'Top' }">Task一覧へ</router-link>
+    <router-link :to="{name: 'Top' }">Topページへ</router-link>
     <div v-for='task in tasks' :key='task.id' @click="handleShowTaskDetailModal(task)">
       <p>{{task.name}}</p>
       <p>{{task.body}}</p>
