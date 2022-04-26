@@ -15,7 +15,7 @@
       <div class='current-task'>
         <p class='task-status'>current</p>
         <div v-for='task in tasks' :key='task.id' @click="handleShowTaskDetailModal(task)" class='task-card'>
-          <p>{{task.name}}</p>
+          <p class='task-name'>{{task.name}}</p>
         </div>
       </div>
     </div>
@@ -123,7 +123,7 @@ export default {
     margin: 0 auto;
     width: 80%;
     max-width: 1000px;
-    background-color: rgb(233, 239, 243);
+    background-color: rgb(241, 245, 247);
     border-radius: 15px;
   }
   .task-container {
@@ -147,6 +147,7 @@ export default {
     height: 50px;
     color: 12px;
     border-radius: 15px;
+    text-align: center;
   }
   
 </style>

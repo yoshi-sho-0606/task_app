@@ -15,7 +15,9 @@ export default{
   #footer {
     width: 90%;
     margin: 0 auto;
+    margin-top: 50px;
     text-align: center;
+    border-top: 1px solid rgb(0, 255, 136);
   }
   #footer .wrapper {
     margin: 0 auto;

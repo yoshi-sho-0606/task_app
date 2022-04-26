@@ -24,12 +24,14 @@ export default {
 <style>
   a {
     text-decoration: none;
+    color: black;
   }
   #header {
     width: 90%;
     height: 70px;
     margin: 0 auto;
     font-size: 20px;
+    border-bottom: 1px solid rgb(0, 255, 136);
   }
   #header .wrapper {
     display: flex;
