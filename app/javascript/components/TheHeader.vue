@@ -1,9 +1,9 @@
 <template>
   <header id='header'>
     <div class='wrapper'>
-      <router-link :to="{name: 'Top' }">Task App</router-link>
+      <router-link :to="{name: 'Top' }" class='top-link'>Task App</router-link>
       <nav>
-        <ul>
+        <ul class='main-nav'>
           <li>
             <router-link :to="{name: 'Top' }">Top</router-link>
           </li>
@@ -22,13 +22,30 @@ export default {
 }
 </script>
 <style>
+  a {
+    text-decoration: none;
+  }
   #header {
-    width: 100%;
-    background-color: rgb(41, 214, 113);
+    width: 90%;
+    height: 70px;
+    margin: 0 auto;
+    font-size: 20px;
   }
   #header .wrapper {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 1000px; 
+    display: flex;
+    justify-content: space-between;
+    
+  }
+  .top-link {
+    margin-top: 20px;
+  }
+  .main-nav {
+    display: flex;
+    margin-top: 20px;
+    list-style: none;
+
+  }
+  .main-nav li {
+    margin-left: 36px;
   }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div id='footer'>
     <div class='wrapper'>
-      <p>Footer</p>
+      <p>task app</p>
     </div>
   </div>
 </template>
@@ -13,8 +13,9 @@ export default{
 </script>
 <style>
   #footer {
-    width: 100%;
-    background-color: rgb(41, 214, 113);
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
   }
   #footer .wrapper {
     margin: 0 auto;

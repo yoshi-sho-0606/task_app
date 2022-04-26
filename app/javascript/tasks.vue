@@ -1,16 +1,23 @@
 <template>
-  <div class='task-container'>
-    <p>{{ title }}</p>
+  <div class='title'>
+      <p>{{ title }}</p>
+  </div>
+  <div class='button-wrapper'>
     <button @click="handleShowTaskCreateModal">
       新規登録
     </button>
+  </div>
+  <div class='task-wrapper'>
     <TaskDetailModal v-if="isVisibleTaskDetailModal" :task="taskDetail" @close-modal="handleCloseTaskDetailModal" @delete-task="handleDeleteTask" @show-edit-modal="handleShowEditModal"/>
     <TaskCreateModal v-if="isVisibleTaskCreateModal" @close-modal="handleCloseTaskCreateModal" @create-task="handleCreateTask" />
     <TaskEditModal v-if="isVisibleTaskEditModal" :task="taskEdit" @close-modal="handleCloseTaskEditModal" @update-task="handleUpdateTask"/>
-    <router-link :to="{name: 'Top' }">Topページへ</router-link>
-    <div v-for='task in tasks' :key='task.id' @click="handleShowTaskDetailModal(task)" class='task-card'>
-      <p>{{task.name}}</p>
-      <p>{{task.body}}</p>
+    <div class='task-container'>
+      <div class='current-task'>
+        <p class='task-status'>current</p>
+        <div v-for='task in tasks' :key='task.id' @click="handleShowTaskDetailModal(task)" class='task-card'>
+          <p>{{task.name}}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -103,16 +110,43 @@ export default {
 </script>
 
 <style scoped>
-  .task-container {
+  .title {
+    text-align: center;
+    font-size: 20px;
+  }
+  .button-wrapper {
     margin: 0 auto;
     width: 80%;
-    max-width: 1000px; 
+    max-width: 1000px;
+  }
+  .task-wrapper {
+    margin: 0 auto;
+    width: 80%;
+    max-width: 1000px;
+    background-color: rgb(233, 239, 243);
+    border-radius: 15px;
+  }
+  .task-container {
+    padding: 10px;
+  }
+  .current-task {
+    width: 250px;
+    padding: 10px;
+  }
+  .task-status {
+    background-color: white;
+    width: 200px;
+    border-radius: 15px;
+    text-align: center;
+    height: 30px;
   }
   .task-card{
     border: 1px solid;
-    margin-top: 5px;
+    margin-top: 10px;
     width: 200px;
-    height: 100px;
+    height: 50px;
     color: 12px;
+    border-radius: 15px;
   }
+  
 </style>
