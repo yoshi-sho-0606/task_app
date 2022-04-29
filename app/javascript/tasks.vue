@@ -8,19 +8,40 @@
     </button>
   </div>
   <div class='task-wrapper'>
-    <TaskDetailModal v-if="isVisibleTaskDetailModal" :task="taskDetail" @close-modal="handleCloseTaskDetailModal" @delete-task="handleDeleteTask" @show-edit-modal="handleShowEditModal"/>
-    <TaskCreateModal v-if="isVisibleTaskCreateModal" @close-modal="handleCloseTaskCreateModal" @create-task="handleCreateTask" />
-    <TaskEditModal v-if="isVisibleTaskEditModal" :task="taskEdit" @close-modal="handleCloseTaskEditModal" @update-task="handleUpdateTask"/>
+    <TaskDetailModal 
+      v-if="isVisibleTaskDetailModal" 
+      :task="taskDetail" 
+      @close-modal="handleCloseTaskDetailModal" 
+      @delete-task="handleDeleteTask"
+      @show-edit-modal="handleShowEditModal"
+    />
+    <TaskCreateModal 
+      v-if="isVisibleTaskCreateModal" 
+      @close-modal="handleCloseTaskCreateModal" 
+      @create-task="handleCreateTask"
+    />
+    <TaskEditModal 
+      v-if="isVisibleTaskEditModal"
+      :task="taskEdit" 
+      @close-modal="handleCloseTaskEditModal" 
+      @update-task="handleUpdateTask"
+    />
     <div class='list-wrapper'>
-    <div>
-      <TaskList />
-    </div>
-    <div>
-      <TaskList />
-    </div>
-    <div>
-      <TaskList />
-    </div>
+      <div>
+        <TaskList 
+          :tasks='todoTasks'
+        />
+      </div>
+      <div>
+        <TaskList
+          :tasks='doingTasks'
+        />
+      </div>
+      <div>
+        <TaskList
+          :tasks='doneTasks'
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -50,7 +71,22 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['tasks'])
+    ...mapGetters(['tasks']),
+    todoTasks: function() {
+      return this.tasks.filter(task => {
+        return task.status == 'todo'
+      })
+    },
+    doingTasks: function() {
+      return this.tasks.filter(task => {
+        return task.status == 'doing'
+      })
+    },
+    doneTasks: function() {
+      return this.tasks.filter(task => {
+        return task.status == 'done'
+      })
+    }
   },
   created: function() {
     this.fetchTasks();

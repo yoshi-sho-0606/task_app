@@ -32,7 +32,7 @@ class Api::V1::TasksController < ApplicationController
 
   private    
     def task_params
-      params.require(:task).permit(:name, :body)
+      params.require(:task).permit(:name, :body, :status)
     end
 
     def set_task

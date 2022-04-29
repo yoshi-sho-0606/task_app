@@ -1,13 +1,25 @@
 <template>
     <div class='task-container'>
       <p class='task-status'>current</p>
-      <p class=task-card>hello</p>
+      <template v-for="task in tasks" :key="task.id">
+        <TaskItem :task="task"/>
+      </template>
     </div>
 </template>
 
 <script>
+import TaskItem from './TaskItem'
 export default {
   name: 'TaskList',
+  components: {
+    TaskItem
+  },
+  props: {
+    tasks: {
+      type: Array,
+      requierd: true
+    }
+  }
 }
 </script>
 
