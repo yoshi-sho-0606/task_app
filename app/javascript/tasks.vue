@@ -11,13 +11,16 @@
     <TaskDetailModal v-if="isVisibleTaskDetailModal" :task="taskDetail" @close-modal="handleCloseTaskDetailModal" @delete-task="handleDeleteTask" @show-edit-modal="handleShowEditModal"/>
     <TaskCreateModal v-if="isVisibleTaskCreateModal" @close-modal="handleCloseTaskCreateModal" @create-task="handleCreateTask" />
     <TaskEditModal v-if="isVisibleTaskEditModal" :task="taskEdit" @close-modal="handleCloseTaskEditModal" @update-task="handleUpdateTask"/>
-    <div class='task-container'>
-      <div class='current-task'>
-        <p class='task-status'>current</p>
-        <div v-for='task in tasks' :key='task.id' @click="handleShowTaskDetailModal(task)" class='task-card'>
-          <p class='task-name'>{{task.name}}</p>
-        </div>
-      </div>
+    <div class='list-wrapper'>
+    <div>
+      <TaskList />
+    </div>
+    <div>
+      <TaskList />
+    </div>
+    <div>
+      <TaskList />
+    </div>
     </div>
   </div>
 </template>
@@ -26,13 +29,15 @@
 import TaskDetailModal from './pages/task/components/TaskDetailModal'
 import TaskCreateModal from './pages/task/components/TaskCreateModal'
 import TaskEditModal from './pages/task/components/TaskEditModal'
+import TaskList from './pages/task/components/TaskList'
 import { mapGetters, mapActions } from "vuex"
 
 export default {
   components: {
     TaskDetailModal,
     TaskCreateModal,
-    TaskEditModal
+    TaskEditModal,
+    TaskList
   },
   data: function () {
     return {
@@ -121,33 +126,13 @@ export default {
   }
   .task-wrapper {
     margin: 0 auto;
-    width: 80%;
+    width:80%;
     max-width: 1000px;
     background-color: rgb(241, 245, 247);
     border-radius: 15px;
   }
-  .task-container {
-    padding: 10px;
+  .list-wrapper {
+    display: flex;
+    flex-wrap: wrap;
   }
-  .current-task {
-    width: 250px;
-    padding: 10px;
-  }
-  .task-status {
-    background-color: white;
-    width: 200px;
-    border-radius: 15px;
-    text-align: center;
-    height: 30px;
-  }
-  .task-card{
-    border: 1px solid;
-    margin-top: 10px;
-    width: 200px;
-    height: 50px;
-    color: 12px;
-    border-radius: 15px;
-    text-align: center;
-  }
-  
 </style>
