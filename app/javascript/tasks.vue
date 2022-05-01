@@ -172,9 +172,17 @@ export default {
     max-width: 1000px;
     background-color: rgb(241, 245, 247);
     border-radius: 15px;
+    padding-top: 15px;
   }
   .list-wrapper {
     display: flex;
     flex-wrap: wrap;
+  }
+  button {
+    margin-bottom: 20px;
+    background-color: rgb(41, 161, 221);
+    width: 100px;
+    color: white;
+    border-radius: 100vh;
   }
 </style>

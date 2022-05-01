@@ -32,7 +32,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .task-status {
     background-color: white;
     width: 200px;

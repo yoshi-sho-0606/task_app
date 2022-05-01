@@ -31,7 +31,7 @@ export default {
     height: 70px;
     margin: 0 auto;
     font-size: 20px;
-    border-bottom: 1px solid rgb(41, 161, 221);
+    border-bottom: 3px solid rgb(41, 161, 221);
   }
   #header .wrapper {
     display: flex;
