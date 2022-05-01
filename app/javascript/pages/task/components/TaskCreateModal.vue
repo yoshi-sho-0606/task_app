@@ -4,8 +4,12 @@
     <p>createModal</p>
     <label for="name">タスク名</label>
     <input type="text" id="name" v-model="task.name">
-    <label for="body">内容</label>
+    <label for="body">詳細</label>
     <textarea id="body" rows="5" v-model="task.body"></textarea>
+    <select id="status" v-model="task.status" class="form-control">
+      <option value="todo">TODO</option>
+      <option value="doing">DOING</option>
+    </select>
     <button @click="handleCreateTask">新規登録</button>
   </div>
 </template>
@@ -18,7 +22,8 @@ export default {
     return {
       task: {
         name: '',
-        body: ''
+        body: '',
+        status: 'todo'
       }
     }
   },
