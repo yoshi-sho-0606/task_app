@@ -1,8 +1,8 @@
 <template>
-    <div class='task-container'>
-      <p class='task-status'>current</p>
+    <div id='taskListId' class='task-container'>
+      <p class='task-status'>{{taskListId}}</p>
       <template v-for="task in tasks" :key="task.id">
-        <TaskItem :task="task"/>
+        <TaskItem :task="task" @handleShowTaskDetailModal="handleShowTaskDetailModal"/>
       </template>
     </div>
 </template>
@@ -18,6 +18,15 @@ export default {
     tasks: {
       type: Array,
       requierd: true
+    },
+    taskListId: {
+      type: String,
+      required: true
+    }
+  },
+  methods: {
+    handleShowTaskDetailModal: function(task) {
+      this.$emit('handleShowTaskDetailModal', task)
     }
   }
 }
@@ -46,6 +55,6 @@ export default {
   .task-container {
     width: 100%;
     margin: 0 auto;
-    padding: 23px;
+    padding: 20px 19px ;
   }
 </style>

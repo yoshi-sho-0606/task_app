@@ -1,6 +1,7 @@
 <template>
   <div>
     <button @click="handleCloseModal">×</button>
+    <p>{{task.status}}</p>
     <h1>{{task.name}}</h1>
     <p>{{task.body}}</p>
     <button @click="handleDeleteTask(task)">削除</button>

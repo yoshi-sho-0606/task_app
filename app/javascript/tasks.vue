@@ -30,16 +30,22 @@
       <div>
         <TaskList 
           :tasks='todoTasks'
+          taskListId="todo"
+          @handleShowTaskDetailModal="handleShowTaskDetailModal"
         />
       </div>
       <div>
         <TaskList
           :tasks='doingTasks'
+          taskListId="doing"
+          @handleShowTaskDetailModal="handleShowTaskDetailModal"
         />
       </div>
       <div>
         <TaskList
           :tasks='doneTasks'
+          taskListId="done"
+          @handleShowTaskDetailModal="handleShowTaskDetailModal"
         />
       </div>
     </div>
