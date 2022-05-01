@@ -44,7 +44,7 @@ export default {
 
 <style scoped>
   .task-detaile-wrapper {
-    width: 300px;
+    width: 250px;
     height: 300px;
     margin: 0 auto;
     background-color: white;
