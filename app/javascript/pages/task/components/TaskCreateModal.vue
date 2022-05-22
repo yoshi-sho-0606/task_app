@@ -18,7 +18,7 @@
           <option value="doing">DOING</option>
         </select>
       </div>
-      <button class="submit-btn" @click="handleCreateTask">新規登録</button>
+      <button type="button" class="submit-btn" @click="handleCreateTask">新規登録</button>
     </form>
   </div>
 </template>
