@@ -1,9 +1,11 @@
 <template>
     <div id='taskListId' class='task-container'>
       <p class='task-status'>{{taskListId}}</p>
-      <template v-for="task in tasks" :key="task.id">
-        <TaskItem :task="task" @handleShowTaskDetailModal="handleShowTaskDetailModal"/>
-      </template>
+      <transition-group>
+        <template v-for="task in tasks" :key="task.id">
+          <TaskItem :task="task" @handleShowTaskDetailModal="handleShowTaskDetailModal"/>
+        </template>
+      </transition-group>
     </div>
 </template>
 
@@ -56,5 +58,12 @@ export default {
     width: 100%;
     margin: 0 auto;
     padding: 20px 19px ;
+  }
+  .v-enter-active, .v-leave-active .v-move{
+    transition: transform 1s, opacity 1s;
+  }
+  .v-enter-from, .v-leave-to {
+    transform: translateX(50%);
+    opacity: 0.0;
   }
 </style>
